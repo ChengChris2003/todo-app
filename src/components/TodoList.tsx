@@ -16,7 +16,7 @@ export function TodoList({ todos, hasTodos, onToggle, onEdit, onDelete }: TodoLi
   }
 
   return (
-    <section className="grid gap-4">
+    <section className="grid gap-3">
       {todos.map((todo) => (
         <TodoCard
           key={todo.id}
@@ -29,4 +29,3 @@ export function TodoList({ todos, hasTodos, onToggle, onEdit, onDelete }: TodoLi
     </section>
   );
 }
-

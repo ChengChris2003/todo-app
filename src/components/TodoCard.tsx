@@ -25,17 +25,17 @@ export function TodoCard({ todo, onToggle, onEdit, onDelete }: TodoCardProps) {
 
   return (
     <article
-      className={`rounded-[28px] border p-5 shadow-soft transition ${
+      className={`rounded-[24px] border px-4 py-3.5 shadow-soft transition ${
         todo.completed
           ? 'border-white/80 bg-white/70'
           : 'border-white/90 bg-white/90 hover:-translate-y-0.5 hover:shadow-card'
       }`}
     >
-      <div className="flex items-start gap-4">
+      <div className="flex items-start gap-3">
         <button
           type="button"
           onClick={() => onToggle(todo.id)}
-          className={`mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-full border transition ${
+          className={`mt-0.5 flex h-[22px] w-[22px] shrink-0 items-center justify-center rounded-full border transition ${
             todo.completed
               ? 'border-accent bg-accent text-white'
               : 'border-line bg-panel text-transparent hover:border-accent'
@@ -48,19 +48,19 @@ export function TodoCard({ todo, onToggle, onEdit, onDelete }: TodoCardProps) {
         </button>
 
         <div className="min-w-0 flex-1">
-          <div className="flex flex-col gap-3 lg:flex-row lg:items-start lg:justify-between">
+          <div className="flex flex-col gap-2.5 lg:flex-row lg:items-start lg:justify-between">
             <div className="min-w-0">
               <h3
-                className={`text-lg font-semibold leading-7 text-ink ${
+                className={`text-[17px] font-semibold leading-6 text-ink ${
                   todo.completed ? 'text-muted line-through decoration-[1.5px]' : ''
                 }`}
               >
                 {todo.title}
               </h3>
               {todo.description ? (
-                <p className="mt-2 text-sm leading-6 text-muted">{todo.description}</p>
+                <p className="mt-1.5 text-sm leading-5 text-muted">{todo.description}</p>
               ) : (
-                <p className="mt-2 text-sm italic leading-6 text-muted/75">暂无描述</p>
+                <p className="mt-1.5 text-sm italic leading-5 text-muted/75">暂无描述</p>
               )}
             </div>
 
@@ -80,8 +80,8 @@ export function TodoCard({ todo, onToggle, onEdit, onDelete }: TodoCardProps) {
             </div>
           </div>
 
-          <div className="mt-5 flex flex-wrap items-center justify-between gap-3">
-            <p className="text-xs font-medium tracking-[0.2em] text-muted">
+          <div className="mt-3.5 flex flex-wrap items-center justify-between gap-2.5">
+            <p className="text-xs font-medium tracking-[0.16em] text-muted">
               {todo.completed ? '已完成' : overdue ? '已逾期' : '进行中'}
             </p>
 
@@ -89,14 +89,14 @@ export function TodoCard({ todo, onToggle, onEdit, onDelete }: TodoCardProps) {
               <button
                 type="button"
                 onClick={() => onEdit(todo)}
-                className="rounded-full border border-line px-4 py-2 text-sm font-medium text-ink transition hover:border-accent/30 hover:bg-accent-soft/55"
+                className="rounded-full border border-line px-3.5 py-1.5 text-sm font-medium text-ink transition hover:border-accent/30 hover:bg-accent-soft/55"
               >
                 编辑
               </button>
               <button
                 type="button"
                 onClick={() => onDelete(todo.id)}
-                className="rounded-full border border-transparent bg-stone-900 px-4 py-2 text-sm font-medium text-white transition hover:bg-priority-high"
+                className="rounded-full border border-transparent bg-stone-900 px-3.5 py-1.5 text-sm font-medium text-white transition hover:bg-priority-high"
               >
                 删除
               </button>

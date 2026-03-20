@@ -63,27 +63,25 @@ export function TodoForm({ editingTodo, onSubmit, onCancelEdit }: TodoFormProps)
   }
 
   return (
-    <section className="rounded-[34px] border border-white/70 bg-white/85 p-6 shadow-card backdrop-blur animate-rise">
+    <section className="rounded-[30px] border border-white/70 bg-white/95 p-6 shadow-card backdrop-blur animate-rise">
       <div className="flex items-start justify-between gap-4">
         <div>
           <p className="text-sm font-medium tracking-[0.24em] text-muted">任务编辑</p>
-          <h2 className="mt-2 font-display text-3xl text-ink">
+          <h2 className="mt-2 font-display text-2xl text-ink">
             {editingTodo ? '修改任务' : '新增任务'}
           </h2>
         </div>
-        {editingTodo ? (
-          <button
-            type="button"
-            onClick={onCancelEdit}
-            className="rounded-full border border-line px-4 py-2 text-sm font-medium text-ink transition hover:border-accent/30 hover:bg-accent-soft/60"
-          >
-            取消
-          </button>
-        ) : null}
+        <button
+          type="button"
+          onClick={onCancelEdit}
+          className="rounded-full border border-line px-4 py-2 text-sm font-medium text-ink transition hover:border-accent/30 hover:bg-accent-soft/60"
+        >
+          关闭
+        </button>
       </div>
 
-      <form className="mt-8 grid gap-4" onSubmit={handleSubmit}>
-        <div className="grid gap-4 lg:grid-cols-[1.3fr_0.9fr]">
+      <form className="mt-6 grid gap-4" onSubmit={handleSubmit}>
+        <div className="grid gap-4 lg:grid-cols-[1.25fr_0.9fr]">
           <label className="grid gap-2">
             <span className="text-sm font-medium text-ink">标题</span>
             <input
@@ -152,12 +150,21 @@ export function TodoForm({ editingTodo, onSubmit, onCancelEdit }: TodoFormProps)
 
           <div className="flex flex-col items-start gap-3 lg:items-end">
             {error ? <p className="text-sm font-medium text-priority-high">{error}</p> : null}
-            <button
-              type="submit"
-              className="rounded-full bg-ink px-5 py-3 text-sm font-medium text-white transition hover:bg-accent focus:outline-none focus:ring-4 focus:ring-accent/15"
-            >
-              {editingTodo ? '保存修改' : '添加任务'}
-            </button>
+            <div className="flex items-center gap-2">
+              <button
+                type="button"
+                onClick={onCancelEdit}
+                className="rounded-full border border-line px-5 py-3 text-sm font-medium text-ink transition hover:border-accent/30 hover:bg-accent-soft/55"
+              >
+                取消
+              </button>
+              <button
+                type="submit"
+                className="rounded-full bg-ink px-5 py-3 text-sm font-medium text-white transition hover:bg-accent focus:outline-none focus:ring-4 focus:ring-accent/15"
+              >
+                {editingTodo ? '确认修改' : '确认新增'}
+              </button>
+            </div>
           </div>
         </div>
       </form>
