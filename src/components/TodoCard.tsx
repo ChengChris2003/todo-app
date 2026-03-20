@@ -25,7 +25,7 @@ export function TodoCard({ todo, onToggle, onEdit, onDelete }: TodoCardProps) {
 
   return (
     <article
-      className={`rounded-[24px] border px-4 py-3.5 shadow-soft transition ${
+      className={`rounded-[22px] border px-3.5 py-3.5 shadow-soft transition sm:rounded-[24px] sm:px-4 ${
         todo.completed
           ? 'border-white/80 bg-white/70'
           : 'border-white/90 bg-white/90 hover:-translate-y-0.5 hover:shadow-card'
@@ -35,7 +35,7 @@ export function TodoCard({ todo, onToggle, onEdit, onDelete }: TodoCardProps) {
         <button
           type="button"
           onClick={() => onToggle(todo.id)}
-          className={`mt-0.5 flex h-[22px] w-[22px] shrink-0 items-center justify-center rounded-full border transition ${
+          className={`mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full border transition ${
             todo.completed
               ? 'border-accent bg-accent text-white'
               : 'border-line bg-panel text-transparent hover:border-accent'
@@ -64,7 +64,7 @@ export function TodoCard({ todo, onToggle, onEdit, onDelete }: TodoCardProps) {
               )}
             </div>
 
-            <div className="flex flex-wrap items-center gap-2">
+            <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
               <span
                 className={`inline-flex rounded-full px-3 py-1 text-xs font-semibold ${priorityStyles[todo.priority]}`}
               >
@@ -89,14 +89,14 @@ export function TodoCard({ todo, onToggle, onEdit, onDelete }: TodoCardProps) {
               <button
                 type="button"
                 onClick={() => onEdit(todo)}
-                className="rounded-full border border-line px-3.5 py-1.5 text-sm font-medium text-ink transition hover:border-accent/30 hover:bg-accent-soft/55"
+                className="min-h-11 rounded-full border border-line px-3.5 py-1.5 text-sm font-medium text-ink transition hover:border-accent/30 hover:bg-accent-soft/55"
               >
                 编辑
               </button>
               <button
                 type="button"
                 onClick={() => onDelete(todo.id)}
-                className="rounded-full border border-transparent bg-stone-900 px-3.5 py-1.5 text-sm font-medium text-white transition hover:bg-priority-high"
+                className="min-h-11 rounded-full border border-transparent bg-stone-900 px-3.5 py-1.5 text-sm font-medium text-white transition hover:bg-priority-high"
               >
                 删除
               </button>

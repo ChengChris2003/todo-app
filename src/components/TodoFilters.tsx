@@ -3,10 +3,8 @@ import { FilterStatus, SortBy } from '../types/todo';
 interface TodoFiltersProps {
   filter: FilterStatus;
   sortBy: SortBy;
-  search: string;
   onFilterChange: (value: FilterStatus) => void;
   onSortChange: (value: SortBy) => void;
-  onSearchChange: (value: string) => void;
 }
 
 const filters: Array<{ label: string; value: FilterStatus }> = [
@@ -18,14 +16,12 @@ const filters: Array<{ label: string; value: FilterStatus }> = [
 export function TodoFilters({
   filter,
   sortBy,
-  search,
   onFilterChange,
   onSortChange,
-  onSearchChange,
 }: TodoFiltersProps) {
   return (
-    <section className="rounded-[30px] border border-white/70 bg-white/80 p-5 shadow-soft backdrop-blur">
-      <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+    <section className="rounded-[20px] border border-white/70 bg-white/80 p-3 shadow-soft backdrop-blur sm:rounded-[24px] sm:p-4 lg:rounded-[30px] lg:p-5">
+      <div className="flex flex-col gap-2.5 sm:gap-3 lg:flex-row lg:items-center lg:justify-between">
         <div className="flex flex-wrap gap-2">
           {filters.map((item) => {
             const isActive = item.value === filter;
@@ -34,7 +30,7 @@ export function TodoFilters({
                 key={item.value}
                 type="button"
                 onClick={() => onFilterChange(item.value)}
-                className={`rounded-full px-4 py-2 text-sm font-medium transition ${
+                className={`min-h-10 rounded-full px-3.5 py-1.5 text-xs font-medium transition sm:min-h-11 sm:px-4 sm:py-2 sm:text-sm ${
                   isActive
                     ? 'bg-accent text-white shadow-soft'
                     : 'border border-line bg-panel text-ink hover:border-accent/30 hover:bg-accent-soft/60'
@@ -46,24 +42,13 @@ export function TodoFilters({
           })}
         </div>
 
-        <div className="grid gap-3 sm:grid-cols-[1.5fr_220px]">
-          <label className="relative block">
-            <span className="sr-only">搜索任务</span>
-            <input
-              type="search"
-              value={search}
-              onChange={(event) => onSearchChange(event.target.value)}
-              placeholder="按标题搜索"
-              className="w-full rounded-2xl border border-line bg-panel px-4 py-3 text-sm text-ink outline-none transition placeholder:text-muted focus:border-accent/40 focus:ring-4 focus:ring-accent/10"
-            />
-          </label>
-
+        <div className="w-full sm:w-[220px]">
           <label className="relative block">
             <span className="sr-only">任务排序</span>
             <select
               value={sortBy}
               onChange={(event) => onSortChange(event.target.value as SortBy)}
-              className="w-full appearance-none rounded-2xl border border-line bg-panel px-4 py-3 text-sm text-ink outline-none transition focus:border-accent/40 focus:ring-4 focus:ring-accent/10"
+              className="min-h-10 w-full appearance-none rounded-xl border border-line bg-panel px-3.5 py-2 text-sm text-ink outline-none transition focus:border-accent/40 focus:ring-4 focus:ring-accent/10 sm:min-h-11 sm:rounded-2xl sm:px-4 sm:py-3"
             >
               <option value="deadline">按截止日期排序</option>
               <option value="priority">按优先级排序</option>
