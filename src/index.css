@@ -28,11 +28,25 @@ body {
     linear-gradient(180deg, #f7f4ee 0%, #f3f1ec 100%);
 }
 
+body,
+#root {
+  overflow-x: hidden;
+}
+
 button,
 input,
 select,
 textarea {
   font: inherit;
+}
+
+@media (max-width: 640px) {
+  input,
+  select,
+  textarea,
+  button {
+    font-size: 16px;
+  }
 }
 
 #root {

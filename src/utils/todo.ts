@@ -35,20 +35,15 @@ export function updateTodoItem(todo: Todo, input: TodoInput): Todo {
 export function getVisibleTodos(
   todos: Todo[],
   filter: FilterStatus,
-  search: string,
   sortBy: SortBy,
 ): Todo[] {
-  const normalizedSearch = search.trim().toLowerCase();
-
   const filtered = todos.filter((todo) => {
     const matchesFilter =
       filter === 'all' ||
       (filter === 'active' && !todo.completed) ||
       (filter === 'completed' && todo.completed);
 
-    const matchesSearch = todo.title.toLowerCase().includes(normalizedSearch);
-
-    return matchesFilter && matchesSearch;
+    return matchesFilter;
   });
 
   return [...filtered].sort((a, b) => {
@@ -85,4 +80,3 @@ export function getVisibleTodos(
     return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
   });
 }
-

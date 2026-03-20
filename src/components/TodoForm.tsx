@@ -63,24 +63,26 @@ export function TodoForm({ editingTodo, onSubmit, onCancelEdit }: TodoFormProps)
   }
 
   return (
-    <section className="rounded-[30px] border border-white/70 bg-white/95 p-6 shadow-card backdrop-blur animate-rise">
+    <section className="rounded-[24px] border border-white/70 bg-white/95 p-4 shadow-card backdrop-blur animate-rise sm:rounded-[30px] sm:p-6">
       <div className="flex items-start justify-between gap-4">
         <div>
-          <p className="text-sm font-medium tracking-[0.24em] text-muted">任务编辑</p>
-          <h2 className="mt-2 font-display text-2xl text-ink">
+          <p className="text-xs font-medium tracking-[0.2em] text-muted sm:text-sm sm:tracking-[0.24em]">
+            任务编辑
+          </p>
+          <h2 className="mt-1.5 font-display text-xl text-ink sm:mt-2 sm:text-2xl">
             {editingTodo ? '修改任务' : '新增任务'}
           </h2>
         </div>
         <button
           type="button"
           onClick={onCancelEdit}
-          className="rounded-full border border-line px-4 py-2 text-sm font-medium text-ink transition hover:border-accent/30 hover:bg-accent-soft/60"
+          className="min-h-11 rounded-full border border-line px-4 py-2 text-sm font-medium text-ink transition hover:border-accent/30 hover:bg-accent-soft/60"
         >
           关闭
         </button>
       </div>
 
-      <form className="mt-6 grid gap-4" onSubmit={handleSubmit}>
+      <form className="mt-5 grid gap-3.5 sm:mt-6 sm:gap-4" onSubmit={handleSubmit}>
         <div className="grid gap-4 lg:grid-cols-[1.25fr_0.9fr]">
           <label className="grid gap-2">
             <span className="text-sm font-medium text-ink">标题</span>
@@ -89,7 +91,7 @@ export function TodoForm({ editingTodo, onSubmit, onCancelEdit }: TodoFormProps)
               value={form.title}
               onChange={(event) => setForm((current) => ({ ...current, title: event.target.value }))}
               placeholder="例如：整理本周计划、提交方案、预约体检"
-              className="w-full rounded-2xl border border-line bg-panel px-4 py-3 text-sm text-ink outline-none transition placeholder:text-muted focus:border-accent/40 focus:ring-4 focus:ring-accent/10"
+              className="min-h-11 w-full rounded-2xl border border-line bg-panel px-4 py-3 text-base text-ink outline-none transition placeholder:text-muted focus:border-accent/40 focus:ring-4 focus:ring-accent/10 sm:text-sm"
             />
           </label>
 
@@ -101,7 +103,7 @@ export function TodoForm({ editingTodo, onSubmit, onCancelEdit }: TodoFormProps)
               onChange={(event) =>
                 setForm((current) => ({ ...current, deadline: event.target.value }))
               }
-              className="w-full rounded-2xl border border-line bg-panel px-4 py-3 text-sm text-ink outline-none transition focus:border-accent/40 focus:ring-4 focus:ring-accent/10"
+              className="min-h-11 w-full rounded-2xl border border-line bg-panel px-4 py-3 text-base text-ink outline-none transition focus:border-accent/40 focus:ring-4 focus:ring-accent/10 sm:text-sm"
             />
           </label>
         </div>
@@ -109,13 +111,13 @@ export function TodoForm({ editingTodo, onSubmit, onCancelEdit }: TodoFormProps)
         <label className="grid gap-2">
           <span className="text-sm font-medium text-ink">描述</span>
           <textarea
-            rows={4}
+            rows={3}
             value={form.description}
             onChange={(event) =>
               setForm((current) => ({ ...current, description: event.target.value }))
             }
             placeholder="补充一些背景信息，方便之后快速进入状态。"
-            className="w-full resize-none rounded-2xl border border-line bg-panel px-4 py-3 text-sm text-ink outline-none transition placeholder:text-muted focus:border-accent/40 focus:ring-4 focus:ring-accent/10"
+            className="min-h-28 w-full resize-none rounded-2xl border border-line bg-panel px-4 py-3 text-base text-ink outline-none transition placeholder:text-muted focus:border-accent/40 focus:ring-4 focus:ring-accent/10 sm:min-h-32 sm:text-sm"
           />
         </label>
 
@@ -135,7 +137,7 @@ export function TodoForm({ editingTodo, onSubmit, onCancelEdit }: TodoFormProps)
                         priority: item.value,
                       }))
                     }
-                    className={`rounded-full px-4 py-2 text-sm font-medium transition ${
+                    className={`min-h-11 rounded-full px-4 py-2 text-sm font-medium transition ${
                       isActive
                         ? 'bg-ink text-white shadow-soft'
                         : 'border border-line bg-panel text-ink hover:border-accent/30 hover:bg-accent-soft/50'
@@ -150,17 +152,17 @@ export function TodoForm({ editingTodo, onSubmit, onCancelEdit }: TodoFormProps)
 
           <div className="flex flex-col items-start gap-3 lg:items-end">
             {error ? <p className="text-sm font-medium text-priority-high">{error}</p> : null}
-            <div className="flex items-center gap-2">
+            <div className="grid w-full grid-cols-2 gap-2 sm:flex sm:w-auto sm:items-center">
               <button
                 type="button"
                 onClick={onCancelEdit}
-                className="rounded-full border border-line px-5 py-3 text-sm font-medium text-ink transition hover:border-accent/30 hover:bg-accent-soft/55"
+                className="min-h-11 rounded-full border border-line px-5 py-3 text-sm font-medium text-ink transition hover:border-accent/30 hover:bg-accent-soft/55"
               >
                 取消
               </button>
               <button
                 type="submit"
-                className="rounded-full bg-ink px-5 py-3 text-sm font-medium text-white transition hover:bg-accent focus:outline-none focus:ring-4 focus:ring-accent/15"
+                className="min-h-11 rounded-full bg-ink px-5 py-3 text-sm font-medium text-white transition hover:bg-accent focus:outline-none focus:ring-4 focus:ring-accent/15"
               >
                 {editingTodo ? '确认修改' : '确认新增'}
               </button>
